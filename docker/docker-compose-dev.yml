@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+#  mongodb:
+#    image: mongodb/mongodb-community-server
+#    container_name: dev-mongodb
+#    restart: always
+#    environment:
+#      - DEV=true
+#      - MONGO_INITDB_ROOT_USERNAME=user
+#      - MONGO_INITDB_ROOT_PASSWORD=pass
+#    volumes:
+#      - "./mongodb-data:/data/db/mongodb/mongodb-community-server"
+#    ports:
+#      - "27017:27017"
+  
+  postgres:
+      image: postgres:9.6
+      container_name: dev-postgres
+      restart: always
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=postgres
+        #POSTGRES_INITDB_ARGS=
+        #POSTGRES_INITDB_WALDIR=
+        #PGDATA=
+        #POSTGRES_PASSWORD_FILE=/run/secrets/postgres-passwd
+      volumes:
+        - "./postgres-data:/var/lib/postgresql/data"  
+      ports:
+        - "5432:5432"
