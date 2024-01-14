@@ -1,6 +1,5 @@
 package com.phone.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,7 @@ public class PhoneDetailsDto {
   private String phoneName;
   @JsonSerialize(using = BooleanToStringSerializer.class)
   private boolean available;
-  private final List<BookDetails> bookDetails = new ArrayList<>();
+  private PhoneTechDetailsDto phoneTechDetailsDto;
+  private final List<BookDetailsDto> bookDetails = new ArrayList<>();
 
 }

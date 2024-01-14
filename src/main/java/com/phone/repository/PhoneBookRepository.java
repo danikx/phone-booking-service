@@ -17,10 +17,4 @@ public interface PhoneBookRepository extends JpaRepository<PhoneBooking, Long> {
   Optional<PhoneBooking> findPhoneBookByBookId(int bookId);
 
   Optional<List<PhoneBooking>> findPhoneBookByPhone(Phone phone);
-
-//  @Transactional
-//  @Modifying
-//  @Query("UPDATE PhoneBooking u SET u.status = :status WHERE u.bookId = :bookId")
-//  void updatePhoneBook(String status, int bookId);
-
 }

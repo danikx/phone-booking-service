@@ -2,13 +2,11 @@ package com.phone.controller;
 
 import java.util.List;
 
-import com.phone.model.Phone;
-import com.phone.model.PhoneBookRequest;
-import com.phone.model.PhoneBookResponse;
+import com.phone.model.PhoneBookRequestDto;
+import com.phone.model.PhoneBookResponseDto;
 import com.phone.model.PhoneDetailsDto;
 import com.phone.model.PhoneDto;
 import com.phone.service.PhoneBookService;
-import com.phone.service.PhoneDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,12 +36,12 @@ public class PhoneBookController {
   }
 
   @PostMapping("/phone/book")
-  public PhoneBookResponse bookPhone(@RequestBody PhoneBookRequest details) {
+  public PhoneBookResponseDto bookPhone(@RequestBody PhoneBookRequestDto details) {
     return phoneBookService.bookPhone(details);
   }
 
   @PutMapping("/phone/{book_id}/return")
-  public PhoneBookResponse returnPhone(@PathVariable("book_id") int bookId) {
+  public PhoneBookResponseDto returnPhone(@PathVariable("book_id") int bookId) {
     return phoneBookService.returnPhone(bookId);
   }
 }

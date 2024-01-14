@@ -27,11 +27,6 @@ public class Config {
         .build();
   }
 
-//  @Bean
-//  public CircuitBreakerConfigCustomizer testCustomizer() {
-//    return CircuitBreakerConfigCustomizer
-//        .of("backendA", builder -> builder.slidingWindowSize(100));
-//  }
 
   @Bean
   public RegistryEventConsumer<CircuitBreaker> myRegistryEventConsumer() {

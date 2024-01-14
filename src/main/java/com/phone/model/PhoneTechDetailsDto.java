@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class PhoneDetails {
+public class PhoneTechDetailsDto {
   private String technology;
   private boolean band2G;
   private boolean band3G;

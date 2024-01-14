@@ -1,6 +1,6 @@
 package com.phone.service;
 
-import com.phone.model.PhoneDetails;
+import com.phone.model.PhoneTechDetailsDto;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +20,7 @@ public class PhoneDetailsServiceImpl implements PhoneDetailsService {
   private String fonapiUrl;
 
   @CircuitBreaker(name = "fonoapi_service", fallbackMethod = "phoneDetailsFallback")
-  public PhoneDetails getPhoneDetailsByName(String phoneName) {
+  public PhoneTechDetailsDto getPhoneDetailsByName(String phoneName) {
     ResponseEntity<String> result = restClient.get()
         .uri(fonapiUrl)
         .retrieve()
@@ -31,10 +31,10 @@ public class PhoneDetailsServiceImpl implements PhoneDetailsService {
       throw new HttpServerErrorException(HttpStatus.SERVICE_UNAVAILABLE);
     }
 
-    return PhoneDetails.builder().band2G(true).band3G(true).band4G(true).technology("empty").build();
+    return PhoneTechDetailsDto.builder().band2G(true).band3G(true).band4G(true).technology("empty").build();
   }
 
-  public PhoneDetails phoneDetailsFallback(String phoneName, Throwable ex) {
+  public PhoneTechDetailsDto phoneDetailsFallback(String phoneName, Throwable ex) {
     return null;
   }
 }

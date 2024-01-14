@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import com.phone.exceptions.PhoneBookingNotFoundException;
 import com.phone.exceptions.PhoneCountNotEnoughException;
 import com.phone.exceptions.PhoneNotFoundException;
-import com.phone.model.BookDetails;
+import com.phone.model.BookDetailsDto;
 import com.phone.model.Phone;
-import com.phone.model.PhoneBookRequest;
-import com.phone.model.PhoneBookResponse;
+import com.phone.model.PhoneBookRequestDto;
+import com.phone.model.PhoneBookResponseDto;
 import com.phone.model.PhoneBooking;
 import com.phone.model.PhoneDetailsDto;
 import com.phone.model.PhoneDto;
@@ -33,7 +33,7 @@ public class PhonebookServiceImpl implements PhoneBookService {
 
   @Override
   @Transactional
-  public PhoneBookResponse bookPhone(PhoneBookRequest phoneBookRequest) {
+  public PhoneBookResponseDto bookPhone(PhoneBookRequestDto phoneBookRequest) {
     Phone phone = phoneRepository
         .findPhoneByPhoneName(phoneBookRequest.getPhoneName())
         .orElseThrow(PhoneNotFoundException::new);
@@ -58,17 +58,17 @@ public class PhonebookServiceImpl implements PhoneBookService {
     phoneRepository.save(phone);
     bookRepository.save(booking);
 
-    return PhoneBookResponse.successfullyBooked(booking.getBookId());
+    return PhoneBookResponseDto.successfullyBooked(booking.getBookId());
   }
 
   @Override
   @Transactional
-  public PhoneBookResponse returnPhone(int bookId) {
+  public PhoneBookResponseDto returnPhone(int bookId) {
     PhoneBooking booking = bookRepository.findPhoneBookByBookId(bookId)
         .orElseThrow(PhoneBookingNotFoundException::new);
 
     if (RETURNED.equals(booking.getStatus())) {
-      return PhoneBookResponse.successfullyReturned(bookId);
+      return PhoneBookResponseDto.successfullyReturned(bookId);
     }
 
     booking.getPhone().increaseCount();
@@ -76,7 +76,7 @@ public class PhonebookServiceImpl implements PhoneBookService {
 
     bookRepository.save(booking);
 
-    return PhoneBookResponse.successfullyReturned(bookId);
+    return PhoneBookResponseDto.successfullyReturned(bookId);
   }
 
   @Override
@@ -94,7 +94,7 @@ public class PhonebookServiceImpl implements PhoneBookService {
 
     for (PhoneBooking phoneBooking : phoneBookList) {
       phoneDetailsDto.getBookDetails().add(
-          BookDetails.builder()
+          BookDetailsDto.builder()
               .phoneBookedAt(phoneBooking.getBookedAt())
               .phoneBookedBy(phoneBooking.getBookedBy())
               .status(phoneBooking.getStatus().name())

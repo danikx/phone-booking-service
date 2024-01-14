@@ -1,10 +1,8 @@
 package com.phone.service;
 
-import java.util.List;
-
-import com.phone.model.PhoneDetails;
+import com.phone.model.PhoneTechDetailsDto;
 
 public interface PhoneDetailsService {
 
-  PhoneDetails getPhoneDetailsByName(String phoneName);
+  PhoneTechDetailsDto getPhoneDetailsByName(String phoneName);
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class BookDetails {
+public class BookDetailsDto {
   private LocalDateTime phoneBookedAt;
   private String phoneBookedBy;
   private String status;
