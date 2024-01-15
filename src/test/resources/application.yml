@@ -4,16 +4,17 @@ spring.datasource:
   username: sa
   password: password
   driverClassName: org.h2.Driver
-  initialization-mode: always
-  data: classpath:phones.sql
 
 spring.jpa:
   database-platform: org.hibernate.dialect.H2Dialect
-  initialization-mode: always
-  data: classpath:phones.sql
   hibernate:
     ddl-auto: update
   show-sql: true
+
+spring:
+  sql:
+    init:
+      mode: never
 
 phone-booking:
   service:
