@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "10d967db-592b-4472-8ae0-0c0152537ad9",
+		"_postman_id": "16e9e147-a69b-47d4-baf2-df4291fb2b2d",
 		"name": "phone-booking-service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3421998"
@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \n    \"phoneName\":\"Samsung Galaxy S8\",\n    \"userName\": \"danik\"\n}",
+					"raw": "{\n    \n    \"phoneName\":\"Samsung Galaxy S8\",\n    \"bookedBy\": \"me\",\n    \"count\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,7 +62,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/phone/1/return",
+					"raw": "localhost:8080/api/v1/phone/book/7/return",
 					"host": [
 						"localhost"
 					],
@@ -71,7 +71,8 @@
 						"api",
 						"v1",
 						"phone",
-						"1",
+						"book",
+						"7",
 						"return"
 					]
 				}

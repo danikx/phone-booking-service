@@ -40,7 +40,7 @@ public class PhoneBookController {
     return phoneBookService.bookPhone(details);
   }
 
-  @PutMapping("/phone/{book_id}/return")
+  @PutMapping("/phone/book/{book_id}/return")
   public PhoneBookResponseDto returnPhone(@PathVariable("book_id") int bookId) {
     return phoneBookService.returnPhone(bookId);
   }

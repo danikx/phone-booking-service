@@ -95,6 +95,7 @@ public class PhonebookServiceImpl implements PhoneBookService {
     for (PhoneBooking phoneBooking : phoneBookList) {
       phoneDetailsDto.getBookDetails().add(
           BookDetailsDto.builder()
+              .bookId(phoneBooking.getBookId())
               .phoneBookedAt(phoneBooking.getBookedAt())
               .phoneBookedBy(phoneBooking.getBookedBy())
               .status(phoneBooking.getStatus().name())

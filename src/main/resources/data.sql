@@ -1,3 +1,4 @@
+delete from phone_booking;
 delete from phone;
 
 insert into phone (phone_id, phone_name, count, total) values (1, 'Samsung Galaxy S9', 1, 1);
