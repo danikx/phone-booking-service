@@ -9,6 +9,6 @@ public class PhoneCountNotEnoughException extends BaseException {
 
   @Override
   public HttpStatus getCode() {
-    return HttpStatus.NOT_FOUND;
+    return HttpStatus.BAD_REQUEST;
   }
 }
